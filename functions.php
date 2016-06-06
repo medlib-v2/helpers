@@ -85,7 +85,7 @@ if (! function_exists('image_matirial')) {
 }
 
 if (! function_exists('getAmazonCover')){
-    
+
     /**
      * @param $isbn
      * @return string
@@ -95,13 +95,17 @@ if (! function_exists('getAmazonCover')){
         $isbn = ISBN13toISBN10(preg_replace('/[^\d]/','',$isbn));
 
         if($isbn != '') {
+
             $cover = 'https://images-eu.ssl-images-amazon.com/images/P/'.$isbn.'.MZZZZZZZ.jpg';
-            list($width, $height, $type, $attr) = getimagesize($cover);
-            if ($width == 1 and $height == 1) {
-                $cover = asset('/images/no_book_cover.jpg');
+
+            try {
+                list($width, $height, $type, $attr) = getimagesize($cover);
+                if ($width == 1 and $height == 1) { $cover = asset('/images/no_book_cover.jpg'); }
             }
+            catch (Exception $e) { $cover = asset('/images/no_book_cover.jpg'); }
+
         }
-        else {$cover = asset('/images/no_book_cover.jpg');}
+        else { $cover = asset('/images/no_book_cover.jpg');}
 
         return $cover;
 
