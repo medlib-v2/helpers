@@ -12,7 +12,11 @@ if (! function_exists('cleanIsbn')) {
     function cleanIsbn($isbn, $replace = [], $delimiter='') {
 
         if( !empty($replace) ) {
-            $str = str_replace((array)$replace, '', $isbn);
+            $str = str_replace( (array) $replace, '', $isbn);
+        }
+        else {
+            $replacements = ['-','_',' '];
+            $str = str_replace($replacements, '', $isbn);
         }
 
         $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $str);
