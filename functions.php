@@ -62,28 +62,17 @@ if (! function_exists('image_matirial')) {
 
     /**
      * @param $material
-     * @return string
+     * @return mixed|string
      */
     function image_matirial($material) {
 
         $url = null;
 
-        if($material == "Unknown"){
+        if($material == "Unknown"){ $url = url('images/icon_unknown_16x16.png'); }
+        elseif($material == "Visual") { $url = url('images/icon_per_16x16.gif'); }
+        elseif($material == "Music CD") { $url = url('images/24/audio-cd.png'); }
+        elseif($material == "VHS (1/2 in., videocassette)") { $url = url('images/icon_vhs_16x16.png'); }
 
-            $url = url('images/icon_unknown_16x16.png');
-
-        } elseif($material == "Visual") {
-
-            $url = url('images/icon_per_16x16.gif');
-
-        } elseif($material == "Music CD") {
-
-            $url = url('images/24/audio-cd.png');
-
-        } elseif($material == "VHS (1/2 in., videocassette)") {
-
-            $url = url('images/icon_vhs_16x16.png');
-        }
         return $url;
     }
 }
