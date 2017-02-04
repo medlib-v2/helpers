@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "php": ">=5.5.9"
+    "php": ">=5.6.4"
 
   },
   "replace": {
@@ -27,5 +27,9 @@
     "files": [
       "functions.php"
     ]
-  }
+  },
+  "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
 }
